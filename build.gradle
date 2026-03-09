@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+group = 'io.github.wojciechkoziestanski'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // To pobierze MaterialFX i VirtualizedFX automatycznie
+    implementation 'io.github.palexdev:materialfx:11.13.9'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+javafx {
+    version = "17"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+application {
+    // Wskazujemy na Twoją klasę UI
+    mainClass = 'io.github.wojciechkoziestanski.UI'
+}
+
+test {
+    useJUnitPlatform()
+}
