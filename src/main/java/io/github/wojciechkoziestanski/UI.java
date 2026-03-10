@@ -9,16 +9,21 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import io.github.palexdev.materialfx.controls.MFXButton;
-
 import javafx.scene.paint.Color;
-
 import java.util.Optional;
 
 public class UI extends Application {
-    TaskPlanner taskPlanner = new TaskPlanner();
+    private TaskPlanner taskPlanner;
 
     @Override
     public void start(Stage primaryStage) {
+        JsonStorage storage = new JsonStorage();
+        this.taskPlanner = storage.load();
+        if (this.taskPlanner == null) {
+            this.taskPlanner = new TaskPlanner();
+            this.taskPlanner.setDefaultCategory();
+        }
+
         //narzedzia globalne
         //ikona back
         SVGPath backIcon = new SVGPath();
@@ -236,6 +241,13 @@ public class UI extends Application {
             MenuItem deleteItemTask = new MenuItem("Usuń");
                 rightClickMenuTask.getItems().addAll(editItemTask, deleteItemTask);
                     taskList.setContextMenu(rightClickMenuTask);
+
+
+
+        primaryStage.setOnCloseRequest(event -> {
+            storage.save(taskPlanner);
+            javafx.application.Platform.exit();
+        });
 
         primaryStage.show();
     }

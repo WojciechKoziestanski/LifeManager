@@ -1,0 +1,33 @@
+{
+  "tasks" : [ ],
+  "categories" : [ {
+    "name" : "Nieskategoryzowane",
+    "tasksOfCategory" : [ ]
+  }, {
+    "name" : "Codzienne",
+    "tasksOfCategory" : [ {
+      "name" : "Umyj zęby"
+    } ]
+  }, {
+    "name" : "Specjalne",
+    "tasksOfCategory" : [ ]
+  }, {
+    "name" : "Poniedziałek",
+    "tasksOfCategory" : [ ]
+  }, {
+    "name" : "Wtorek",
+    "tasksOfCategory" : [ ]
+  }, {
+    "name" : "Środa",
+    "tasksOfCategory" : [ ]
+  }, {
+    "name" : "Czwartek",
+    "tasksOfCategory" : [ ]
+  }, {
+    "name" : "Piątek",
+    "tasksOfCategory" : [ ]
+  }, {
+    "name" : "Sobota",
+    "tasksOfCategory" : [ ]
+  } ]
+}
