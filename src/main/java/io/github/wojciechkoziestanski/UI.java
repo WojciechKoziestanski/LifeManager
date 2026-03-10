@@ -12,6 +12,8 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 
 import javafx.scene.paint.Color;
 
+import java.util.Optional;
+
 public class UI extends Application {
     TaskPlanner taskPlanner = new TaskPlanner();
 
@@ -198,9 +200,19 @@ public class UI extends Application {
         //akcje na klawiszach
         taskButton.setOnAction(e -> primaryStage.setScene(taskPlannerScene));
         backButton.setOnAction(e -> primaryStage.setScene(choicePageScene));
-        addTaskQuickButton.setOnAction((e ->DialogHelper.addNewTaskLogicDialog()));
+        addTaskQuickButton.setOnAction(e -> {
+                    Optional<DialogHelper.TaskResult> result = DialogHelper.addNewTaskLogicDialog(taskPlanner.getCategories());
+                    result.ifPresent(taskData -> {
+                        if (taskData.name != null && !taskData.name.trim().isEmpty()) {
+                            taskPlanner.addTaskToCategory(taskData.category, taskData.name);
+                        }
+                    });
+                });
+
+
+
+
         addCatQuickButton.setOnAction(e -> {
-            System.out.println("DEBUG: Kliknięto guzik!");
             String catNameInput = DialogHelper.addNewCatLogicDialog();
             if (catNameInput != null) {
                 boolean success = taskPlanner.createCategory(catNameInput);
