@@ -101,6 +101,7 @@ public class UI extends Application {
         taskListHeader.setMaxWidth(Double.MAX_VALUE);
         taskListHeader.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 0 0 10 0; -fx-alignment: center");
 
+
         //buttons
 
         Button addCatQuickButton = new Button("+");
@@ -165,6 +166,14 @@ public class UI extends Application {
         categoryList.setMaxHeight(Double.MAX_VALUE);
         catView.getChildren().clear();
         catView.getChildren().addAll(catHeaderBox ,categoryList);
+
+        VBox taskListView = new VBox();
+            HBox taskListHeaderBox = new HBox(10);
+            HBox.setHgrow(taskListHeaderBox, Priority.ALWAYS);
+            taskListHeaderBox.setMaxWidth(Double.MAX_VALUE);
+            taskListHeaderBox.getChildren().addAll(taskListHeader);
+
+
 
         /*
         „OBIEKCIE CATEGORY LIST” – Hej, Ty, biały prostokącie po prawej!

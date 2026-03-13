@@ -2,15 +2,25 @@
   "tasks" : [ ],
   "categories" : [ {
     "name" : "Nieskategoryzowane",
-    "tasksOfCategory" : [ ]
+    "tasksOfCategory" : [ {
+      "name" : "Pogadaj z Agatka o hajsie za mieszkanie"
+    }, {
+      "name" : "Zamowienie z amazon"
+    }, {
+      "name" : "Poczytaj ksiazke"
+    } ]
   }, {
     "name" : "Codzienne",
     "tasksOfCategory" : [ {
       "name" : "Umyj zęby"
+    }, {
+      "name" : "Sprawdz studia"
     } ]
   }, {
     "name" : "Specjalne",
-    "tasksOfCategory" : [ ]
+    "tasksOfCategory" : [ {
+      "name" : "Skręć łóżko"
+    } ]
   }, {
     "name" : "Poniedziałek",
     "tasksOfCategory" : [ ]
