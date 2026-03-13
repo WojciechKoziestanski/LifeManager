@@ -244,7 +244,7 @@ public class UI extends Application {
             if (e.getClickCount() == 2){
                 Task selected = taskList.getSelectionModel().getSelectedValues().stream().findFirst().orElse(null);
                 if (selected != null){
-                    taskPlanner.getTasks().add(selected);
+                    taskPlanner.getToDoList().getTaskList().add(selected);
                 }
             }
         });
