@@ -1,43 +1,27 @@
 {
-  "tasks" : [ ],
+  "tasks" : [ {
+    "name" : "Wypij shake proteinowy"
+  }, {
+    "name" : "Wypij shake proteinowy"
+  }, {
+    "name" : "Wypij shake proteinowy"
+  }, {
+    "name" : "Wypij shake proteinowy"
+  } ],
   "categories" : [ {
     "name" : "Nieskategoryzowane",
-    "tasksOfCategory" : [ {
-      "name" : "Pogadaj z Agatka o hajsie za mieszkanie"
-    }, {
-      "name" : "Zamowienie z amazon"
-    }, {
-      "name" : "Poczytaj ksiazke"
-    } ]
+    "tasksOfCategory" : [ ]
+  }, {
+    "name" : "Specjalne",
+    "tasksOfCategory" : [ ]
   }, {
     "name" : "Codzienne",
     "tasksOfCategory" : [ {
-      "name" : "Umyj zęby"
-    }, {
-      "name" : "Sprawdz studia"
+      "name" : "Wypij shake proteinowy"
     } ]
-  }, {
-    "name" : "Specjalne",
-    "tasksOfCategory" : [ {
-      "name" : "Skręć łóżko"
-    } ]
-  }, {
-    "name" : "Poniedziałek",
-    "tasksOfCategory" : [ ]
-  }, {
-    "name" : "Wtorek",
-    "tasksOfCategory" : [ ]
-  }, {
-    "name" : "Środa",
-    "tasksOfCategory" : [ ]
-  }, {
-    "name" : "Czwartek",
-    "tasksOfCategory" : [ ]
-  }, {
-    "name" : "Piątek",
-    "tasksOfCategory" : [ ]
-  }, {
-    "name" : "Sobota",
-    "tasksOfCategory" : [ ]
-  } ]
+  } ],
+  "toDoList" : {
+    "name" : null,
+    "tasks" : [ ]
+  }
 }

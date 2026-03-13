@@ -1,5 +1,6 @@
 package io.github.wojciechkoziestanski;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
@@ -14,6 +15,7 @@ public class JsonStorage {
         this.mapper.enable(SerializationFeature.INDENT_OUTPUT);
         this.mapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
         this.mapper.configure(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        this.mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
     public void save (TaskPlanner planner){

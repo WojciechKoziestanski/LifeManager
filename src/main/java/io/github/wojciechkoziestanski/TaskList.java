@@ -1,5 +1,6 @@
 package io.github.wojciechkoziestanski;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +18,7 @@ public class TaskList {
     public TaskList(){};
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
+    @JsonGetter("tasks")
     public ObservableList<Task> getTaskList() {return taskList;}
     @JsonSetter("tasks")
     public void setTasks(List<Task> tasksList) {
@@ -24,5 +26,6 @@ public class TaskList {
     }
     @Override
     public String toString() {return name;}
+
 
 }

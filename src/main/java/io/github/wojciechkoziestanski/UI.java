@@ -172,7 +172,13 @@ public class UI extends Application {
             HBox.setHgrow(taskListHeaderBox, Priority.ALWAYS);
             taskListHeaderBox.setMaxWidth(Double.MAX_VALUE);
             taskListHeaderBox.getChildren().addAll(taskListHeader);
-
+        MFXListView<Task> toDoList = new MFXListView<>();
+        toDoList.setItems(taskPlanner.getToDoList().getTaskList());
+        VBox.setVgrow(toDoList, Priority.ALWAYS);
+        toDoList.setMaxWidth(Double.MAX_VALUE);
+        toDoList.setMaxHeight(Double.MAX_VALUE);
+        taskListView.getChildren().clear();
+        taskListView.getChildren().addAll(taskListHeaderBox, toDoList);
 
 
         /*
@@ -191,12 +197,10 @@ public class UI extends Application {
             }
         });
 
-        VBox listView = new VBox();
-
         //DODAWANIE DO SIATKI
         mainPanel.add(tasksView, 1, 0);
         mainPanel.add(catView, 2, 0);
-        mainPanel.add(listView, 0, 0);
+        mainPanel.add(taskListView, 0, 0);
 
         taskPlannerPage.setCenter(mainPanel);
         GridPane.setVgrow(tasksView, Priority.ALWAYS);
@@ -214,6 +218,7 @@ public class UI extends Application {
         //akcje na klawiszach
         taskButton.setOnAction(e -> primaryStage.setScene(taskPlannerScene));
         backButton.setOnAction(e -> primaryStage.setScene(choicePageScene));
+            //dodawanie taska
         addTaskQuickButton.setOnAction(e -> {
                     Optional<DialogHelper.TaskResult> result = DialogHelper.addNewTaskLogicDialog(taskPlanner.getCategories());
                     result.ifPresent(taskData -> {
@@ -223,9 +228,7 @@ public class UI extends Application {
                     });
                 });
 
-
-
-
+            //dodawanie kategorii
         addCatQuickButton.setOnAction(e -> {
             String catNameInput = DialogHelper.addNewCatLogicDialog();
             if (catNameInput != null) {
@@ -236,6 +239,24 @@ public class UI extends Application {
             }
         });
 
+        //dodawanie taska do listy zadan
+        taskList.setOnMouseClicked(e -> {
+            if (e.getClickCount() == 2){
+                Task selected = taskList.getSelectionModel().getSelectedValues().stream().findFirst().orElse(null);
+                if (selected != null){
+                    taskPlanner.getTasks().add(selected);
+                }
+            }
+        });
+        //usuwanie taska z listy
+        toDoList.setOnMouseClicked(e -> {
+            if (e.getClickCount() == 2){
+                Task selected = toDoList.getSelectionModel().getSelectedValues().stream().findFirst().orElse(null);
+                if (selected != null){
+                    taskPlanner.getToDoList().getTaskList().remove(selected);
+                }
+            }
+        });
 
         //rightClick menu
 
