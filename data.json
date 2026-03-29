@@ -40,6 +40,8 @@
   } ],
   "toDoList" : {
     "name" : null,
-    "tasks" : [ ]
+    "tasks" : [ {
+      "name" : "Wypij shake proteinowy"
+    } ]
   }
 }

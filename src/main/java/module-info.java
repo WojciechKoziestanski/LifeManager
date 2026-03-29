@@ -8,6 +8,7 @@ module io.github.wojciechkoziestanski {
     requires com.fasterxml.jackson.annotation;
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.datatype.jsr310;
+    requires java.sql;
 
     // To pozwala bibliotekom "dobrać się" do Twoich klas w trakcie działania programu
     opens io.github.wojciechkoziestanski to javafx.fxml, MaterialFX, com.fasterxml.jackson.databind;
