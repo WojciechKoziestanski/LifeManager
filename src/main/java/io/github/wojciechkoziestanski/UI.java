@@ -276,6 +276,7 @@ public class UI extends Application {
 
         primaryStage.setOnCloseRequest(event -> {
             storage.save(taskPlanner);
+            new DatabaseCommands().save(taskPlanner);
             javafx.application.Platform.exit();
         });
 
