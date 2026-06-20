@@ -27,12 +27,12 @@ public class TaskPlanner {
                 return false;
             }
         }
-        categories.add(new Category(cleanedName));
+        categories.add(new Category(cleanedName, categories.size() + 1));
         return true;
     }
 
     public void setDefaultCategory(){
-        categories.add(new Category("Nieskategoryzowane"));
+        categories.add(new Category("Nieskategoryzowane", 0));
     }
 
 

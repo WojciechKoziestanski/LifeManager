@@ -1,10 +1,8 @@
 package io.github.wojciechkoziestanski;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.ResultSet;
+import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DatabaseCommands {
     boolean save(TaskPlanner taskplanner) {
@@ -58,6 +56,43 @@ public class DatabaseCommands {
                 resetAutoCommitQuietly(conn);
             }
         } catch (SQLException e) {
+            System.out.println("Error: connection");
+            throw new RuntimeException(e);
+        }
+    }
+
+    boolean load(TaskPlanner taskPlanner){
+        try (Connection conn = DatabaseConnector.getConnection()){
+            conn.setAutoCommit(false);
+            try (
+                    PreparedStatement loadTasks = conn.prepareStatement("SELECT * FROM tasks WHERE category_id = ?");
+                    PreparedStatement loadCategories = conn.prepareStatement("SELECT * FROM categories ");
+                    ){
+                ResultSet categories = loadCategories.executeQuery();
+                while(categories.next()){
+                    int id = categories.getInt("id");
+                    String nameCat = categories.getString("name");
+                    Category newCategory = new Category(nameCat, id);
+                    taskPlanner.getCategories().add(newCategory);
+                    loadTasks.setInt(1,id);
+                    ResultSet tasks = loadTasks.executeQuery();
+                    while (tasks.next()){
+                        String nameTask = tasks.getString("name");
+                        taskPlanner.addTaskToCategory(newCategory, nameTask);
+                    }
+                }
+                
+                conn.commit();
+                return true;               
+
+            }catch (SQLException e){
+                rollbackQuietly(conn);
+                System.out.println("Error: connection");
+                throw new RuntimeException(e);
+                } finally {
+                    resetAutoCommitQuietly(conn);
+                }
+        } catch (SQLException e){
             System.out.println("Error: connection");
             throw new RuntimeException(e);
         }

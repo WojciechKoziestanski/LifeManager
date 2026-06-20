@@ -8,12 +8,14 @@ import java.util.List;
 
 public class Category {
     private String name;
+    private int id;
     @JsonManagedReference
     ObservableList<Task> tasksOfCategory = FXCollections.observableArrayList();
 
 
-    public Category(String name){
+    public Category(String name, int id){
         this.name = name;
+        this.id = id;
     }
     public Category(){}
     public String getName() {
@@ -30,5 +32,11 @@ public class Category {
     @Override
     public String toString() {
         return name;
+    }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 }
