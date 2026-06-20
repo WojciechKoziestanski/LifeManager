@@ -17,10 +17,10 @@ public class UI extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        JsonStorage storage = new JsonStorage();
-        this.taskPlanner = storage.load();
-        if (this.taskPlanner == null) {
-            this.taskPlanner = new TaskPlanner();
+        this.taskPlanner = new TaskPlanner();
+        DatabaseCommands dbCmd = new DatabaseCommands();
+        dbCmd.load(this.taskPlanner);
+        if (taskPlanner.getCategories().isEmpty()) {
             this.taskPlanner.setDefaultCategory();
         }
 
@@ -275,7 +275,6 @@ public class UI extends Application {
 
 
         primaryStage.setOnCloseRequest(event -> {
-            storage.save(taskPlanner);
             new DatabaseCommands().save(taskPlanner);
             javafx.application.Platform.exit();
         });
