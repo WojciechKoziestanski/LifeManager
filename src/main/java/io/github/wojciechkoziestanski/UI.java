@@ -68,8 +68,8 @@ public class UI extends Application {
         choicePage.add(emptyButton, 2, 0);
 
         //Scena jest dopasowana do ekranu screen.getprimary.getbounds to zwroc ekran->zwroc prostokat->o wymiarach
-        Scene choicePageScene = new Scene(choicePage, Screen.getPrimary().getBounds().getWidth(),
-                                      Screen.getPrimary().getBounds().getHeight());
+        Scene choicePageScene = new Scene(choicePage, Screen.getPrimary().getVisualBounds().getWidth(),
+                                      Screen.getPrimary().getVisualBounds().getHeight());
         primaryStage.setScene(choicePageScene);
 
 
@@ -78,8 +78,8 @@ public class UI extends Application {
         //root panel
         BorderPane taskPlannerPage = new BorderPane();
         //scena
-        Scene taskPlannerScene = new Scene(taskPlannerPage, Screen.getPrimary().getBounds().getWidth(),
-                                            Screen.getPrimary().getBounds().getHeight());
+        Scene taskPlannerScene = new Scene(taskPlannerPage, Screen.getPrimary().getVisualBounds().getWidth(),
+                                            Screen.getPrimary().getVisualBounds().getHeight());
         //label
         Label taskPlannerLabel = new Label("Task planner!");
         taskPlannerLabel.setStyle(
