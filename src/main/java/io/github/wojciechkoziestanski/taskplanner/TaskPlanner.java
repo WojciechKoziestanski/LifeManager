@@ -1,4 +1,4 @@
-package io.github.wojciechkoziestanski;
+package io.github.wojciechkoziestanski.taskplanner;
 
 
 import javafx.collections.FXCollections;

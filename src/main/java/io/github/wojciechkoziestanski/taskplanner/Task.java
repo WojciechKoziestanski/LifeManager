@@ -1,4 +1,4 @@
-package io.github.wojciechkoziestanski;
+package io.github.wojciechkoziestanski.taskplanner;
 
 public class Task {
 

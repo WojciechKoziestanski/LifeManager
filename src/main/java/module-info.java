@@ -14,4 +14,6 @@ module io.github.wojciechkoziestanski {
     exports io.github.wojciechkoziestanski;
     exports io.github.wojciechkoziestanski.database;
     opens io.github.wojciechkoziestanski.database to MaterialFX, com.fasterxml.jackson.databind, javafx.fxml;
+    exports io.github.wojciechkoziestanski.taskplanner;
+    opens io.github.wojciechkoziestanski.taskplanner to MaterialFX, com.fasterxml.jackson.databind, javafx.fxml;
 }

@@ -1,6 +1,9 @@
 package io.github.wojciechkoziestanski;
 
 import io.github.wojciechkoziestanski.database.DatabaseConnector;
+import io.github.wojciechkoziestanski.taskplanner.Category;
+import io.github.wojciechkoziestanski.taskplanner.Task;
+import io.github.wojciechkoziestanski.taskplanner.TaskPlanner;
 
 import java.sql.*;
 
