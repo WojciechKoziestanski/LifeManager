@@ -1,5 +1,7 @@
 package io.github.wojciechkoziestanski;
 
+import io.github.wojciechkoziestanski.database.DatabaseConnector;
+
 import java.sql.*;
 
 

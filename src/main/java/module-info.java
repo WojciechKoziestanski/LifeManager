@@ -12,4 +12,6 @@ module io.github.wojciechkoziestanski {
 
     // To udostępnia Twój kod na zewnątrz
     exports io.github.wojciechkoziestanski;
+    exports io.github.wojciechkoziestanski.database;
+    opens io.github.wojciechkoziestanski.database to MaterialFX, com.fasterxml.jackson.databind, javafx.fxml;
 }
