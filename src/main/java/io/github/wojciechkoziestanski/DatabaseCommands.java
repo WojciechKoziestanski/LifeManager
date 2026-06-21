@@ -1,8 +1,7 @@
 package io.github.wojciechkoziestanski;
 
 import java.sql.*;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class DatabaseCommands {
     boolean save(TaskPlanner taskplanner) {

@@ -13,9 +13,6 @@ repositories {
 
 dependencies {
     implementation 'io.github.palexdev:materialfx:11.13.9'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.1'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.16.1'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation 'com.h2database:h2:2.2.224'

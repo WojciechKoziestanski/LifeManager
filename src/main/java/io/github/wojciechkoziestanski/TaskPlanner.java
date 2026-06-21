@@ -1,20 +1,14 @@
 package io.github.wojciechkoziestanski;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSetter;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Scanner;
+
 
 
 public class TaskPlanner {
-    @JsonIgnore
     private ObservableList<Task> tasks = FXCollections.observableArrayList();
-    @JsonIgnore
     private ObservableList<Category> categories = FXCollections.observableArrayList();
     private TaskList toDoList = new TaskList();
 
@@ -44,20 +38,11 @@ public class TaskPlanner {
 
 
     //gettery i settery i konstruktor
-    @JsonGetter("categories")
     public ObservableList<Category> getCategories() {
         return categories;
     }
-    @JsonGetter("tasks")
     public ObservableList<Task> getTasks() {return tasks;}
     public TaskPlanner(){}
     public TaskList getToDoList(){return toDoList;}
-    @JsonSetter("categories")
-    public void setCategories(List<Category> categoriesList){this.categories = FXCollections.observableArrayList(categoriesList);}
-    @JsonSetter("tasks")
-    public void setTasks(List<Task> tasksList) {
-        this.tasks = FXCollections.observableArrayList(tasksList);
-    }
-    @JsonSetter("toDoList")
     public void setToDoList(TaskList toDoList){this.toDoList = toDoList;}
 }

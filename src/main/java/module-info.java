@@ -5,9 +5,6 @@ module io.github.wojciechkoziestanski {
 
     // Ten moduł pochodzi z biblioteki MaterialFX (dependencies w gradle)
     requires MaterialFX;
-    requires com.fasterxml.jackson.annotation;
-    requires com.fasterxml.jackson.databind;
-    requires com.fasterxml.jackson.datatype.jsr310;
     requires java.sql;
 
     // To pozwala bibliotekom "dobrać się" do Twoich klas w trakcie działania programu
