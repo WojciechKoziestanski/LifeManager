@@ -1,9 +1,7 @@
 package io.github.wojciechkoziestanski;
 
 import io.github.palexdev.materialfx.controls.MFXListView;
-import io.github.wojciechkoziestanski.taskplanner.Category;
-import io.github.wojciechkoziestanski.taskplanner.Task;
-import io.github.wojciechkoziestanski.taskplanner.TaskPlanner;
+import io.github.wojciechkoziestanski.taskplanner.*;
 import javafx.application.Application;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;

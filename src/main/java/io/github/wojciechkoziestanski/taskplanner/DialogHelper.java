@@ -1,6 +1,5 @@
-package io.github.wojciechkoziestanski;
+package io.github.wojciechkoziestanski.taskplanner;
 
-import io.github.wojciechkoziestanski.taskplanner.Category;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;

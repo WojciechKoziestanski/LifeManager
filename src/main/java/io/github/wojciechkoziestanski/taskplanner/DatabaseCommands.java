@@ -1,15 +1,12 @@
-package io.github.wojciechkoziestanski;
+package io.github.wojciechkoziestanski.taskplanner;
 
 import io.github.wojciechkoziestanski.database.DatabaseConnector;
-import io.github.wojciechkoziestanski.taskplanner.Category;
-import io.github.wojciechkoziestanski.taskplanner.Task;
-import io.github.wojciechkoziestanski.taskplanner.TaskPlanner;
 
 import java.sql.*;
 
 
 public class DatabaseCommands {
-    boolean save(TaskPlanner taskplanner) {
+    public boolean save(TaskPlanner taskplanner) {
         try (Connection conn = DatabaseConnector.getConnection()) {
             conn.setAutoCommit(false);
             try {
@@ -65,7 +62,7 @@ public class DatabaseCommands {
         }
     }
 
-    boolean load(TaskPlanner taskPlanner){
+    public boolean load(TaskPlanner taskPlanner){
         try (Connection conn = DatabaseConnector.getConnection()){
             conn.setAutoCommit(false);
             try (
