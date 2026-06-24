@@ -223,8 +223,8 @@ public class UI extends Application {
         addTaskQuickButton.setOnAction(e -> {
                     Optional<DialogHelper.TaskResult> result = DialogHelper.addNewTaskLogicDialog(taskPlanner.getCategories());
                     result.ifPresent(taskData -> {
-                        if (taskData.name != null && !taskData.name.trim().isEmpty()) {
-                            taskPlanner.addTaskToCategory(taskData.category, taskData.name);
+                        if (taskData.getName() != null && !taskData.getName().trim().isEmpty()) {
+                            taskPlanner.addTaskToCategory(taskData.getCategory(), taskData.getName());
                         }
                     });
                 });

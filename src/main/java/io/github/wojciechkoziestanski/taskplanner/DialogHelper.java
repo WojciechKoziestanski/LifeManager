@@ -9,12 +9,20 @@ import java.util.Optional;
 
 public class DialogHelper {
     public static class TaskResult {
-        String name;
-        Category category;
+        private String name;
+        private Category category;
 
         public TaskResult(String name, Category category) {
             this.name = name;
             this.category = category;
+        }
+
+        public String getName(){
+            return name;
+        }
+
+        public Category getCategory(){
+            return category;
         }
     }
 
