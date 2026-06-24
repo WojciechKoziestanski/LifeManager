@@ -17,7 +17,7 @@ public class UI extends Application {
     private TaskPlanner taskPlanner;
 
     @Override
-    public void start1(Stage primaryStage) {
+    public void start(Stage primaryStage) {
         this.taskPlanner = new TaskPlanner();
         DatabaseCommands dbCmd = new DatabaseCommands();
         dbCmd.load(this.taskPlanner);
