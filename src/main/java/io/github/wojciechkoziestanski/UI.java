@@ -9,6 +9,9 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import java.util.Optional;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.SVGPath;
+
 
 public class UI extends Application {
     private TaskPlanner taskPlanner;
@@ -58,13 +61,19 @@ public class UI extends Application {
         Button addTaskQuickButton = new Button("+");
         addTaskQuickButton.setStyle("-fx-background-radius: 20; -fx-min-width: 30px;");
 
+        SVGPath pdfIcon = new SVGPath();
+        pdfIcon.setContent("M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3M9.5 11.5C9.5 12.3 8.8 13 8 13H7V15H5.5V9H8C8.8 9 9.5 9.7 9.5 10.5V11.5M14.5 13.5C14.5 14.3 13.8 15 13 15H10.5V9H13C13.8 9 14.5 9.7 14.5 10.5V13.5M18.5 10.5H17V11.5H18.5V13H17V15H15.5V9H18.5V10.5M12 10.5H13V13.5H12V10.5M7 10.5H8V11.5H7V10.5Z");
+        pdfIcon.setFill(Color.valueOf("#555555"));
+
+        Button exportToPdfButton = new Button();
+        exportToPdfButton.setGraphic(pdfIcon);
+        exportToPdfButton.setStyle("-fx-background-color: transparent;");
+
         // top panel
         BorderPane topBar = new BorderPane();
         HBox leftButtons = new HBox(15);
         leftButtons.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
         leftButtons.setPadding(new javafx.geometry.Insets(10, 0, 10, 20));
-        Button extraFuncButton = new Button("F");
-        leftButtons.getChildren().add(extraFuncButton);
         topBar.setLeft(leftButtons);
         topBar.setCenter(taskPlannerLabel);
         taskPlannerPage.setTop(topBar);
@@ -115,9 +124,10 @@ public class UI extends Application {
 
         VBox taskListView = new VBox();
         HBox taskListHeaderBox = new HBox(10);
-        HBox.setHgrow(taskListHeaderBox, Priority.ALWAYS);
-        taskListHeaderBox.setMaxWidth(Double.MAX_VALUE);
-        taskListHeaderBox.getChildren().addAll(taskListHeader);
+        HBox.setHgrow(taskListHeader, Priority.ALWAYS);
+        taskListHeader.setMaxWidth(Double.MAX_VALUE);
+        taskListHeaderBox.getChildren().addAll(taskListHeader, exportToPdfButton);
+
         MFXListView<Task> toDoList = new MFXListView<>();
         toDoList.setItems(taskPlanner.getToDoList().getTaskList());
         VBox.setVgrow(toDoList, Priority.ALWAYS);
