@@ -178,6 +178,10 @@ public class UI extends Application {
             result.ifPresent(taskData -> {
                 if (taskData.getName() != null && !taskData.getName().trim().isEmpty()) {
                     taskPlanner.addTaskToCategory(taskData.getCategory(), taskData.getName());
+                    Category targetCategory = taskData.getCategory();
+                    int index = taskPlanner.getCategories().indexOf(targetCategory);
+                    taskPlanner.getCategories().remove(index);
+                    taskPlanner.getCategories().add(index, targetCategory);
                 }
             });
         });
