@@ -233,6 +233,26 @@ public class UI extends Application {
         rightClickMenuTask.getItems().addAll(editItemTask, deleteItemTask);
         taskList.setContextMenu(rightClickMenuTask);
 
+        deleteItemCat.setOnAction(e -> {
+            Category selected = categoryList.getSelectionModel().getSelectedValues().stream().findFirst().orElse(null);
+            if(selected != null) {
+                taskPlanner.getCategories().remove(selected);
+            }
+       });
+
+        editItemCat.setOnAction(e -> {
+            Category selected = categoryList.getSelectionModel().getSelectedValues().stream().findFirst().orElse(null);
+            if (selected != null) {
+                String catNameInput = DialogHelper.addNewCatLogicDialog();
+                if (catNameInput != null) {
+                    selected.setName(catNameInput);
+                }
+            }
+        });
+
+
+
+
         primaryStage.setOnCloseRequest(event -> {
             new DatabaseCommands().save(taskPlanner);
             javafx.application.Platform.exit();
