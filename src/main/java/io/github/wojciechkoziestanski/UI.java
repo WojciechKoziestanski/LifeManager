@@ -246,6 +246,9 @@ public class UI extends Application {
                 String catNameInput = DialogHelper.addNewCatLogicDialog();
                 if (catNameInput != null) {
                     selected.setName(catNameInput);
+                    int index = taskPlanner.getCategories().indexOf(selected);
+                    taskPlanner.getCategories().remove(index);
+                    taskPlanner.getCategories().add(index, selected);
                 }
             }
         });
