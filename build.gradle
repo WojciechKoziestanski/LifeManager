@@ -16,6 +16,8 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation 'com.h2database:h2:2.2.224'
+    // Apache PDFBox - w pełni modularna biblioteka do PDF
+    implementation 'org.apache.pdfbox:pdfbox:2.0.29'
 }
 
 javafx {
@@ -29,4 +31,12 @@ application {
 
 test {
     useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ['--add-reads', 'io.github.wojciechkoziestanski=ALL-UNNAMED']
+}
+
+application {
+    applicationDefaultJvmArgs = ['--add-reads', 'io.github.wojciechkoziestanski=ALL-UNNAMED']
 }

@@ -1,19 +1,21 @@
 module io.github.wojciechkoziestanski {
-    // Te moduły pochodzą z JavaFX (plugin w gradle)
+    // Moduły JavaFX
     requires javafx.controls;
     requires javafx.fxml;
 
-    // Ten moduł pochodzi z biblioteki MaterialFX (dependencies w gradle)
+    // Moduły bibliotek
     requires MaterialFX;
     requires java.sql;
+    // Moduł Apache PDFBox (w pełni modularny!)
+    requires org.apache.pdfbox;
 
-    // To pozwala bibliotekom "dobrać się" do Twoich klas w trakcie działania programu
-    opens io.github.wojciechkoziestanski to javafx.fxml, MaterialFX, com.fasterxml.jackson.databind;
+    // Udostępnienie pakietów dla bibliotek (dla refleksji)
+    opens io.github.wojciechkoziestanski to javafx.fxml, MaterialFX;
+    opens io.github.wojciechkoziestanski.database to MaterialFX, javafx.fxml;
+    opens io.github.wojciechkoziestanski.taskplanner to MaterialFX, javafx.fxml;
 
-    // To udostępnia Twój kod na zewnątrz
+    // Eksportowanie naszych pakietów
     exports io.github.wojciechkoziestanski;
     exports io.github.wojciechkoziestanski.database;
-    opens io.github.wojciechkoziestanski.database to MaterialFX, com.fasterxml.jackson.databind, javafx.fxml;
     exports io.github.wojciechkoziestanski.taskplanner;
-    opens io.github.wojciechkoziestanski.taskplanner to MaterialFX, com.fasterxml.jackson.databind, javafx.fxml;
 }

@@ -257,6 +257,38 @@ public class UI extends Application {
             }
         });
 
+        deleteItemTask.setOnAction(e -> {
+            Task selected = taskList.getSelectionModel().getSelectedValues().stream().findFirst().orElse(null);
+            if (selected != null) {
+                Category targetCategory = selected.getCategory();
+                targetCategory.getTasksOfCategory().remove(selected);
+                int index = taskPlanner.getCategories().indexOf(targetCategory);
+                taskPlanner.getCategories().remove(index);
+                taskPlanner.getCategories().add(index, targetCategory);
+            }
+        });
+
+        editItemTask.setOnAction(e -> {
+            Task selected = taskList.getSelectionModel().getSelectedValues().stream().findFirst().orElse(null);
+            if (selected != null) {
+                Category oldCategory = selected.getCategory();
+                Optional<DialogHelper.TaskResult> result = DialogHelper.addNewTaskLogicDialog(taskPlanner.getCategories());
+                result.ifPresent(taskData -> {
+                    if (taskData.getName() != null && !taskData.getName().trim().isEmpty()) {
+                        oldCategory.getTasksOfCategory().remove(selected); // usuń ze starej PRZED zmianą
+                        selected.setName(taskData.getName());
+                        selected.setCategory(taskData.getCategory());
+                        taskData.getCategory().getTasksOfCategory().add(selected); // dodaj do nowej (lub starej jeśli nie zmieniono)
+                    }
+                });
+            }
+        });
+
+        exportToPdfButton.setOnAction(e -> {
+            PdfExporter exporter = new PdfExporter();
+            exporter.export(taskPlanner.getToDoList());
+        });
+
 
 
 
