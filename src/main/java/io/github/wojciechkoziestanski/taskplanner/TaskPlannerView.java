@@ -82,14 +82,28 @@ public class TaskPlannerView implements AppModule {
         addAllTasksToToDoList.setStyle("-fx-background-color: transparent;");
 
         // top panel
-        BorderPane topBar = new BorderPane();
-        HBox leftButtons = new HBox(15);
-        leftButtons.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
-        leftButtons.setPadding(new javafx.geometry.Insets(10, 0, 10, 20));
-        topBar.setLeft(leftButtons);
-        topBar.setCenter(taskPlannerLabel);
-        taskPlannerPage.setTop(topBar);
-        topBar.setStyle("-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-width: 0 0 2 0;");
+        VBox topCointainer = new VBox();
+        taskPlannerPage.setTop(topCointainer);
+            BorderPane topBar = new BorderPane();
+            topBar.setCenter(taskPlannerLabel);
+            topBar.setStyle("-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-width: 0 0 2 0;");
+
+                //menubar
+                MenuBar menubar = new MenuBar();
+                    Menu fileMenu = new Menu("File");
+                    MenuItem exportPdf = new MenuItem("Export to PDF");
+                    fileMenu.getItems().add(exportPdf);
+
+                    Menu viewMenu = new Menu("View");
+                    Menu fontsize = new Menu("Font size");
+                        MenuItem small = new MenuItem("Small");
+                        MenuItem medium = new MenuItem("Medium");
+                        MenuItem large = new MenuItem("Large");
+                        fontsize.getItems().addAll(small, medium, large);
+                    viewMenu.getItems().add(fontsize);
+
+        menubar.getMenus().addAll(fileMenu, viewMenu);
+        topCointainer.getChildren().addAll(menubar, topBar);
 
         // main panel
         GridPane mainPanel = new GridPane();
