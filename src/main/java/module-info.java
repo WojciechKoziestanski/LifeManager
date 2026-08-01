@@ -8,6 +8,7 @@ module io.github.wojciechkoziestanski {
     requires java.sql;
     // Moduł Apache PDFBox (w pełni modularny!)
     requires org.apache.pdfbox;
+    requires javafx.graphics;
 
     // Udostępnienie pakietów dla bibliotek (dla refleksji)
     opens io.github.wojciechkoziestanski to javafx.fxml, MaterialFX;
