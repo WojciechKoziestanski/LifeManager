@@ -1,12 +1,14 @@
 package io.github.wojciechkoziestanski.database;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseConnector {
-    private static final String URL = "jdbc:h2:./lifemanager_db";
+    private static final String DB_DIR = System.getProperty("user.home") + File.separator + "LifeManager";
+    private static final String URL = "jdbc:h2:file:" + DB_DIR + File.separator + "lifemanager_db";
     private static final String USER = "sa";
     private static final String PASSWORD = "";
 
