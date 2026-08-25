@@ -11,8 +11,8 @@ public class Category {
     @Column(nullable = false, unique = true)
     private String name;
 
-    //@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    //private List<Task> tasks;
+    @OneToMany(mappedBy = "category")
+    private List<Task> tasks;
 
     public Category(){};
 
