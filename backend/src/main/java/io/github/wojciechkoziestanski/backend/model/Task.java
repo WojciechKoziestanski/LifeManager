@@ -2,6 +2,8 @@ package io.github.wojciechkoziestanski.backend.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Task {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,6 +15,10 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
+
+    @ManyToMany(mappedBy = "tasks")
+    private List<TaskList> taskLists;
+
 
     public Task(){}
 
@@ -38,5 +44,13 @@ public class Task {
 
     public long getId() {
         return id;
+    }
+
+    public void setTaskLists(List<TaskList> taskLists){
+        this.taskLists = taskLists;
+    }
+
+    public List<TaskList> getTaskLists() {
+        return taskLists;
     }
 }
