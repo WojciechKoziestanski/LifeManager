@@ -1,5 +1,6 @@
 package io.github.wojciechkoziestanski.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category")
+    @JsonManagedReference
     private List<Task> tasks;
 
     public Category(){};

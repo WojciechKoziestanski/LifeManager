@@ -2,6 +2,7 @@ package io.github.wojciechkoziestanski.backend.controller;
 
 import io.github.wojciechkoziestanski.backend.model.Category;
 import io.github.wojciechkoziestanski.backend.repository.CategoryRepository;
+import io.github.wojciechkoziestanski.backend.service.CategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,9 +12,12 @@ import java.util.List;
 @RequestMapping("/api/categories")
 public class CategoryController {
     private final CategoryRepository categoryRepository;
+    private final CategoryService categoryService;
 
-    public CategoryController(CategoryRepository categoryRepository){
+    public CategoryController(CategoryRepository categoryRepository, CategoryService categoryService){
         this.categoryRepository = categoryRepository;
+        this.categoryService = categoryService;
+
     }
 
     @GetMapping
@@ -35,6 +39,6 @@ public class CategoryController {
 
     @DeleteMapping("/{id}")
     public void deleteCategory(@PathVariable Long id){
-        categoryRepository.deleteById(id);
+        categoryService.deleteCategory(id);
     }
 }
