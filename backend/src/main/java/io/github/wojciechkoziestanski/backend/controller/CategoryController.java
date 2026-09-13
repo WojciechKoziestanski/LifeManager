@@ -34,7 +34,7 @@ public class CategoryController {
 
     @PostMapping
     public Category createCategory(@RequestBody Category category){
-        return categoryRepository.save(category);
+        return categoryService.createCategory(category.getName());
     }
 
     @DeleteMapping("/{id}")

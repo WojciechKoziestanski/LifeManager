@@ -6,8 +6,6 @@ import io.github.wojciechkoziestanski.backend.repository.CategoryRepository;
 import io.github.wojciechkoziestanski.backend.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class CategoryService {
     private final TaskRepository taskRepository;
@@ -34,5 +32,19 @@ public class CategoryService {
                 taskRepository.save(task);
             }
             categoryRepository.delete(category);
+    }
+
+    public Category createCategory(String name) {
+        if (name == null || name.trim().equals("")) {
+            throw new IllegalArgumentException("Nazwa kategorii nie może być pusta");
+        }
+        String trimName = name.trim();
+        if (categoryRepository.existsByNameIgnoreCase(trimName)){
+            throw new IllegalArgumentException("Katergoria o tej nazwie istnieje");
+        }
+        Category category = new Category();
+        category.setName(trimName);
+        return categoryRepository.save(category);
+
     }
 }
