@@ -32,4 +32,7 @@ public class Category {
         this.name = name;
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
 }
